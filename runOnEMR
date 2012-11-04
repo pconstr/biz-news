@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if [ ! -f regex-0.1.20121031.tar.gz ]
+then
+    wget http://pypi.python.org/packages/source/r/regex/regex-0.1.20121031.tar.gz
+fi
+
+if [ ! -f feedparser-5.1.2.tar.gz ]
+then
+    wget http://pypi.python.org/packages/source/f/feedparser/feedparser-5.1.2.tar.gz
+fi
+
+tar czvf modules.tar.gz businesses.py
+
+MRJOB_CONF=mrjob.conf ./biz-news.py -r emr <sources >output
